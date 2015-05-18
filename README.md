@@ -34,7 +34,7 @@ Assuming the base URL being < host >/api:
 > GET /antennae                
 :finds all antennae (that exist and have existed)
 
-> GET /antennae/:bodyCode
+> GET /antennae/:bodyCode 
 :finds antenna with specific bodycode
 
 > GET /antennae/:bodyStatus    

@@ -45,9 +45,9 @@ function findAllUsers(req, res , next){
         var results = [];
 
         ldapres.on('searchEntry', function(entry) {
-          console.log('entry: ' + JSON.stringify(entry.object));
+          console.log('\nentry:');
+          console.log(entry.object);
           results.push(entry.object);
-          return next(entry);
         });
         ldapres.on('searchReference', function(referral) {
           console.log('referral: ' + referral.uris.join());
@@ -56,7 +56,7 @@ function findAllUsers(req, res , next){
           console.error('error: ' + err.message);
         });
         ldapres.on('end', function(result) {
-          console.log('status: ' + result.status);
+          console.log('end status: ' + result.status);
           res.send(200, results);          
         });
 
@@ -66,6 +66,6 @@ function findAllUsers(req, res , next){
 }
 
 
-server.listen(port ,ip_addr, function(){
+server.listen(port , function(){
     console.log('%s listening at %s ', server.name , server.url);
 });
