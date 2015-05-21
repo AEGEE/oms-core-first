@@ -14,9 +14,17 @@ server.use(restify.CORS());
  
 
 //Define your API here
-var userPath = '/users'
+var userPath = '/users';
 server.get({path : userPath , version : '0.0.1'} , core.findAllUsers);
-//server.get({path : userPath +'/:userId' , version : '0.0.1'} , findUser);
+server.get({path : userPath +'/:userId' , version : '0.0.1'} , core.findUser);
+server.get({path : userPath +'/:userId'+'/memberships' , version : '0.0.1'} , core.findMemberships);
+server.post({path : userPath +'/create' , version : '0.0.1'} , core.createUser);
+server.post({path : userPath +'/:userId'+'/memberships/create' , version : '0.0.1'} , core.createMemberships);
+
+
+var antennaePath = '/antennae';
+server.get({path : antennaePath , version : '0.0.1'} , core.findAllAntennae);
+server.get({path : antennaePath +'/:bodyCode' , version : '0.0.1'} , core.findAntenna);
 
 
 server.listen(port , function(){

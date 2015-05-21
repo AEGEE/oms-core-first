@@ -6,6 +6,9 @@ Welcome gentlemen, to Aperture Science. Now you've met one another on the limo r
 
 Welcome to the OMS Core project page! OMS stands for Online Membership System, and it's a long overdue project within AEGEE-Europe. Things are changing though, and if you're here it means you want to make a glorious contribution to science.
 
+## How to contribute
+
+Have a read at [this branching model](nvie.com/posts/a-successful-git-branching-model/), then fork the repo and start contributing in any way you want! Don't forget to add your name to contributors.txt
 
 ## Language
 
@@ -28,29 +31,77 @@ Assuming the base URL being < host >/api:
 
 ### Create
 
+```
+#!python
+
+POST /users/create
+```          
+:creates new user
+
+```
+#!python
+
+POST /users/:userId/memberships/create
+```          
+:creates new membership for an user
 
 ### Read
 
-> GET /antennae                
+```
+#!python
+
+GET /antennae
+```          
 :finds all antennae (that exist and have existed)
 
-> GET /antennae/:bodyCode 
+```
+#!python
+
+GET /antennae/:bodyCode 
+```
 :finds antenna with specific bodycode
 
-> GET /antennae/:bodyStatus    
-:finds antenna with specific body status
+```
+#!python
 
-> GET /users                   
+GET /antennae/:bodyStatus
+```
+:finds antenna with specific body status (NOT IMPLEMENTED)
+
+```
+#!python
+
+GET /users
+```
 :finds all users
 
-> GET /user/:uid               
+```
+#!python
+
+GET /user/:userId
+```
 :finds specific users
 
-> GET /user/:membershipdate    
-:finds users member since at least...
+```
+#!python
 
-> GET /user/:membershipuntil   
-:finds users with membership until...
+GET /user/:userId/memberships
+```
+:finds specific users' memberships
+
+```
+#!python
+
+GET /user/:membershipdate    
+```
+:finds users member since at least... (NOT IMPLEMENTED)
+
+```
+#!python
+
+GET /user/:membershipuntil
+```
+:finds users with membership until... (NOT IMPLEMENTED)
 
 ### Update
 
