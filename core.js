@@ -7,7 +7,7 @@ var client = ldap.createClient({
   url: 'ldap://127.0.0.1:389'
 });
 
-var ldap_top_dn = 'dc=aegee, dc=org';
+var ldap_top_dn = 'o=aegee, c=eu';
 
 client.bind('cn=admin,'+ldap_top_dn, 'aegee', function(err) { //TODO: change to a privileged but non root
   assert.ifError(err);
