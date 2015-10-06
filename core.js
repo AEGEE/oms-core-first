@@ -207,6 +207,7 @@ exports.createUser = function(req, res , next){
       objectclass: 'aegeePersonFab'
     };
 
+
     client.add('uid='+entry.uid+","+baseDN, entry, function(err) {
       assert.ifError(err);
     });
@@ -217,10 +218,10 @@ exports.createUser = function(req, res , next){
     res.send(200, entry);   
 }
 
-exports.createMemberships = function(req, res , next){ //TODO: extend to multiple memberships?
+exports.createApplicationOld = function(req, res , next){ //TODO: extend to multiple memberships?
     res.setHeader('Access-Control-Allow-Origin','*');
 
-    var baseDN = 'uid='+req.params.userId+', ou=people, '+ldap_top_dn;
+    var baseDN = 'uid='+req.params.userId+', ou=applications, '+ldap_top_dn;
 
     //TODO: check if UID already existing
 
@@ -244,3 +245,148 @@ exports.createMemberships = function(req, res , next){ //TODO: extend to multipl
 
     res.send(200, entry);   
 }
+
+exports.createApplication = function(req, res , next){ //TODO: extend to multiple memberships?
+    res.setHeader('Access-Control-Allow-Origin','*');
+
+    var baseDN = 'uid='+req.params.userId+', ou=people, '+ldap_top_dn;
+
+    //TODO: check if UID already existing
+
+    var entry = {
+      bodyCategory: req.params.bodyCategory,
+      bodyCode: req.params.bodyCode, //TODO: check clashes between existing UIDs
+      bodyNameAscii: req.params.bodyNameAscii,
+      mail: req.params.mail,
+      memberSinceDate: req.params.memberSinceDate,
+      memberUntilDate: req.params.memberUntilDate,
+      netcom: req.params.netcom,
+      memberType: 'Applicant',
+      objectclass: 'aegeePersonMembership'
+    };
+
+    client.add('bodyCode='+entry.bodyCode+","+baseDN, entry, function(err) {
+      assert.ifError(err);
+    });
+
+    console.log("added entry under "+baseDN+": ");
+    console.log(entry);
+
+    res.send(200, entry);   
+}
+//createUser = creates user + creates membership UNDER APPLICATION (case 1, new member)
+//AND
+//createApplication = findUser + copia under application + createMembership (case 2, new applic)
+//then generalise
+//case 1) doesnt exist -> applies to local first
+//case 2) exists .     -> applies to local/body/whatever
+
+exports.approveMembershipOld = function(req, res , next){ //TODO: extend to multiple memberships?
+    res.setHeader('Access-Control-Allow-Origin','*');
+
+    var baseDN = 'uid='+req.params.userId+', ou=people, '+ldap_top_dn;
+    var fromDN = 'uid='+req.params.userId+', ou=applications, '+ldap_top_dn;
+
+    //TODO: check if UID already existing
+
+    client.modifyDN( fromDN, baseDN, function(err) {
+      assert.ifError(err);
+    });
+
+    //testing if path is successful
+    var opts = {
+      filter: '(&(uid='+req.params.userId+')(objectClass=aegeePersonFab))',
+      scope: 'sub',
+      attributes: ''
+    };
+    var searchDN = 'ou=people, '+ldap_top_dn;
+
+  var results = [];
+
+    client.search(searchDN, opts, function(err, ldapres) {
+        assert.ifError(err);
+
+        ldapres.on('searchEntry', function(entry) {
+          console.log('\nentry:');
+          console.log(entry.object);
+          results.push(entry.object);
+        });
+        ldapres.on('searchReference', function(referral) {
+          console.log('referral: ' + referral.uris.join());
+        });
+        ldapres.on('error', function(err) {
+          console.error('error: ' + err.message);
+        });
+        ldapres.on('end', function(result) {
+          console.log('end status: ' + result.status);
+        });
+    });
+
+
+    console.log("moved entry "+fromDN+" under "+baseDN+": ");
+    console.log(results);
+
+    //TODO: membership should begin from acceptance date, not from application date (maybe)
+
+    res.send(200, results);   
+}
+
+exports.approveMembership = function(req, res , next){ //TODO: extend to multiple memberships?
+    res.setHeader('Access-Control-Allow-Origin','*');
+
+    var baseDN = 'bodyCode='+req.params.bodyCode+',uid='+req.params.userId+', ou=people, '+ldap_top_dn;
+
+    var change = new ldap.Change({
+      operation: 'replace',
+      modification: {
+        memberType: 'Member'
+      }
+    });
+
+    client.modify( baseDN, change, function(err) {
+      assert.ifError(err);
+    });
+
+
+    //testing if path is successful
+    var opts = {
+      filter: '(&(uid='+req.params.userId+')(objectClass=aegeePersonFab))',
+      scope: 'sub',
+      attributes: ''
+    };
+    var searchDN = 'ou=people, '+ldap_top_dn;
+
+var results = [];
+
+    client.search(searchDN, opts, function(err, ldapres) {
+        assert.ifError(err);
+
+        ldapres.on('searchEntry', function(entry) {
+          console.log('\nentry:');
+          console.log(entry.object);
+          results.push(entry.object);
+        });
+        ldapres.on('searchReference', function(referral) {
+          console.log('referral: ' + referral.uris.join());
+        });
+        ldapres.on('error', function(err) {
+          console.error('error: ' + err.message);
+        });
+        ldapres.on('end', function(result) {
+          console.log('end status: ' + result.status);
+        });
+    });
+
+
+    console.log(baseDN+" is now member: ");
+    console.log(results);
+
+    //TODO: membership should begin from acceptance date, not from application date (maybe)
+
+    res.send(200, results);   
+}
+
+
+//HELPER METHODS
+
+searchLDAP = function() {};
