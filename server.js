@@ -18,14 +18,16 @@ var userPath = '/users';
 server.get({path : userPath , version : '0.0.1'} , core.findAllUsers);
 server.get({path : userPath +'/:userId' , version : '0.0.1'} , core.findUser);
 server.get({path : userPath +'/:userId'+'/memberships' , version : '0.0.1'} , core.findMemberships);
+server.get({path : userPath +'/:userId'+'/applications' , version : '0.0.1'} , core.findApplications);
 server.post({path : userPath +'/create' , version : '0.0.1'} , core.createUser);
 server.post({path : userPath +'/:userId'+'/memberships/create' , version : '0.0.1'} , core.createApplication);
-server.post({path : userPath +'/:userId'+'/memberships/:bodyCode/approve' , version : '0.0.1'} , core.approveMembership);
+server.post({path : userPath +'/:userId'+'/memberships/:bodyCode/modify' , version : '0.0.1'} , core.modifyMembership);
 
 
 var antennaePath = '/antennae';
 server.get({path : antennaePath , version : '0.0.1'} , core.findAllAntennae);
 server.get({path : antennaePath +'/:bodyCode' , version : '0.0.1'} , core.findAntenna);
+server.post({path : antennaePath +'/create' , version : '0.0.1'} , core.createAntenna);
 
 
 server.listen(port , function(){
