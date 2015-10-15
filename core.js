@@ -3,13 +3,15 @@
 var assert = require('assert');
 var ldap = require('ldapjs');
 
+var config = require('config.json')();
+
 var client = ldap.createClient({
-  url: 'ldap://127.0.0.1:389'
+  url: config.ldap.url
 });
 
 var ldap_top_dn = 'o=aegee, c=eu';
 
-client.bind('cn=admin,'+ldap_top_dn, 'aegee', function(err) { //TODO: change to a privileged but non root
+client.bind('cn=admin,'+ldap_top_dn, config.ldap.rootpw, function(err) { //TODO: change to a privileged but non root
   assert.ifError(err);
 });
 
