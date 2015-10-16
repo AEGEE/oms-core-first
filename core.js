@@ -45,7 +45,7 @@ exports.findAllUsers = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -80,7 +80,7 @@ exports.findUser = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -115,7 +115,7 @@ exports.findMemberships = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -150,7 +150,7 @@ exports.findAllAntennae = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -185,7 +185,7 @@ exports.findAntenna = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -214,7 +214,7 @@ exports.createUser = function(req, res , next){
     console.log("added entry: ");
     console.log(entry);
 
-    res.send(200, entry);   
+    res.send(200, entry);
 }
 
 exports.createMemberships = function(req, res , next){ //TODO: extend to multiple memberships?
@@ -242,5 +242,5 @@ exports.createMemberships = function(req, res , next){ //TODO: extend to multipl
     console.log("added entry under "+baseDN+": ");
     console.log(entry);
 
-    res.send(200, entry);   
+    res.send(200, entry);
 }
