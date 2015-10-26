@@ -2,7 +2,7 @@
 var restify = require('restify');
 var core = require('./core'); //the real place where the API callbacks are
 
-var port    =  '8080';
+var config = require('config.json')();
 
 var server = restify.createServer({
     name : "calaf"
@@ -27,6 +27,6 @@ server.get({path : antennaePath , version : '0.0.1'} , core.findAllAntennae);
 server.get({path : antennaePath +'/:bodyCode' , version : '0.0.1'} , core.findAntenna);
 
 
-server.listen(port , function(){
+server.listen(config.port, function(){
     console.log('%s listening at %s ', server.name , server.url);
 });
