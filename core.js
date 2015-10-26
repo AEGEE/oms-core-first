@@ -94,6 +94,7 @@ exports.findUser = function(req, res , next){
     });
 }
 
+//this finds the membership *of a person*
 //v0.0.1 - remember to bump version numbers
 exports.findMemberships = function(req, res , next){
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -132,6 +133,7 @@ exports.findMemberships = function(req, res , next){
     });
 }
 
+//this finds the applications *to a body*
 //v0.0.1 - remember to bump version numbers
 exports.findApplications = function(req, res , next){ //cannot do "find all applications" method because of API call routes
     res.setHeader('Access-Control-Allow-Origin','*');
@@ -139,11 +141,11 @@ exports.findApplications = function(req, res , next){ //cannot do "find all appl
 
     //set search parameters
     var opts = {
-      filter: '(&(objectClass=aegeePersonMembership)(memberType=Applicant))',
+      filter: '(&(&(objectClass=aegeePersonMembership)(memberType=Applicant))(bodyCode='+req.params.bodyCode+'))',
       scope: 'sub',
       attributes: ''
     };
-    var searchDN = 'uid='+req.params.userId+', ou=people, '+ldap_top_dn;
+    var searchDN = 'ou=people, '+ldap_top_dn;
 
     client.search(searchDN, opts, function(err, ldapres) {
         assert.ifError(err);
@@ -318,9 +320,10 @@ exports.createApplication = function(req, res , next){ //TODO: extend to multipl
       bodyCode: req.params.bodyCode, //TODO: check clashes between existing UIDs
       bodyNameAscii: req.params.bodyNameAscii,
       mail: req.params.mail,
+      uid: req.params.uid,
+      givenName: req.params.cn,
       memberSinceDate: req.params.memberSinceDate,
       memberUntilDate: req.params.memberUntilDate,
-      netcom: req.params.netcom,
       memberType: 'Applicant',
       objectclass: 'aegeePersonMembership'
     };
