@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "restify": "~3.0.0",
+    "config.json": "~0.0.4",
     "ldapjs": "~0.7.0"
   }
 }

@@ -3,13 +3,15 @@
 var assert = require('assert');
 var ldap = require('ldapjs');
 
+var config = require('config.json')();
+
 var client = ldap.createClient({
-  url: 'ldap://127.0.0.1:389'
+  url: config.ldap.url
 });
 
 var ldap_top_dn = 'o=aegee, c=eu';
 
-client.bind('cn=admin,'+ldap_top_dn, 'aegee', function(err) { //TODO: change to a privileged but non root
+client.bind('cn=admin,'+ldap_top_dn, config.ldap.rootpw, function(err) { //TODO: change to a privileged but non root
   assert.ifError(err);
 });
 
@@ -45,7 +47,7 @@ exports.findAllUsers = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -80,7 +82,7 @@ exports.findUser = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -115,7 +117,7 @@ exports.findMemberships = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -150,7 +152,7 @@ exports.findAllAntennae = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -185,7 +187,7 @@ exports.findAntenna = function(req, res , next){
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -214,7 +216,7 @@ exports.createUser = function(req, res , next){
     console.log("added entry: ");
     console.log(entry);
 
-    res.send(200, entry);   
+    res.send(200, entry);
 }
 
 exports.createMemberships = function(req, res , next){ //TODO: extend to multiple memberships?
@@ -242,5 +244,5 @@ exports.createMemberships = function(req, res , next){ //TODO: extend to multipl
     console.log("added entry under "+baseDN+": ");
     console.log(entry);
 
-    res.send(200, entry);   
+    res.send(200, entry);
 }
