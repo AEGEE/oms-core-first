@@ -23,9 +23,6 @@ exports.findAllUsers = function(req, res , next){
     res.setHeader('Access-Control-Allow-Origin','*');
     console.log("findAllUsers");
 
-    //var results = searchLDAP("aegeePersonFab", 'ou=people, '+ldap_top_dn ); //type, basedn
-    //console.log(results);
-
     //set search parameters
     var opts = {
       filter: '(objectClass=aegeePersonFab)',
@@ -41,8 +38,8 @@ exports.findAllUsers = function(req, res , next){
         var results = [];
 
         ldapres.on('searchEntry', function(entry) {
-          //console.log('\nentry:');
-          //console.log(entry.object);
+          console.log('\nentry:');
+          console.log(entry.object);
           results.push(entry.object);
         });
         ldapres.on('searchReference', function(referral) {
@@ -54,11 +51,11 @@ exports.findAllUsers = function(req, res , next){
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
 
-          res.send(200, results); 
+          res.send(200, results);
 
         });
 
-    });    
+    });
 }
 
 //v0.0.1 - remember to bump version numbers
@@ -169,7 +166,7 @@ exports.findApplications = function(req, res , next){ //cannot do "find all appl
         });
         ldapres.on('end', function(result) {
           console.log('end status: ' + result.status);
-          res.send(200, results);          
+          res.send(200, results);
         });
 
     });
@@ -305,7 +302,7 @@ exports.createAntenna = function(req, res , next){
     console.log("added entry: ");
     console.log(entry);
 
-    res.send(200, entry);   
+    res.send(200, entry);
 
     //TRIGGER: create local groups (e.g. board) entries
 
@@ -340,9 +337,9 @@ exports.createApplication = function(req, res , next){ //TODO: extend to multipl
     console.log("added entry under "+baseDN+": ");
     console.log(entry);
 
-    res.send(200, entry); 
+    res.send(200, entry);
 
-    //TRIGGER: send email to board of applied body  
+    //TRIGGER: send email to board of applied body
 
 }
 
@@ -400,7 +397,7 @@ exports.modifyMembership = function(req, res , next){ //TODO: extend to multiple
 
     //TODO: membership should begin from acceptance date, not from application date (maybe)
 
-    res.send(200, results);   
+    res.send(200, results);
 
     //TRIGGER: send email to user about application to body confirmed/rejected
 }
@@ -408,6 +405,10 @@ exports.modifyMembership = function(req, res , next){ //TODO: extend to multiple
 
 //HELPER METHODS
 
+
+//Usage: <type, basedn>
+//var results = searchLDAP("aegeePersonFab", 'ou=people, '+ldap_top_dn );
+//console.log(results);
 searchLDAP = function(searchType, searchDN) {
 
   //set search parameters
@@ -423,8 +424,8 @@ searchLDAP = function(searchType, searchDN) {
         var results = [];
 
         ldapres.on('searchEntry', function(entry) {
-          //console.log('\nentry:');
-          //console.log(entry.object);
+          console.log('\nentry:');
+          console.log(entry.object);
           results.push(entry.object);
         });
         ldapres.on('searchReference', function(referral) {

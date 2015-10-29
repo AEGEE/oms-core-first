@@ -25,7 +25,7 @@ server.post({path : userPath +'/create' , version : '0.0.1'} , core.createUser);
 server.post({path : userPath +'/:userId'+'/memberships/create' , version : '0.0.1'} , core.createApplication);
 server.post({path : userPath +'/:userId'+'/memberships/:bodyCode/modify' , version : '0.0.1'} , core.modifyMembership);
 
-var bodiesPath = '/bodies'; 
+var bodiesPath = '/bodies';
 //sorted by antenna (given antenna, who is member/applied)
 server.get({path : bodiesPath +'/:bodyCode'+'/applications' , version : '0.0.1'} , core.findApplications);
 server.get({path : bodiesPath +'/:bodyCode'+'/members' , version : '0.0.1'} , FIXME);
