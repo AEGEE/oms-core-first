@@ -15,11 +15,11 @@ server.use(restify.CORS());
 
 //Define your API here
 var userPath = '/users';
-server.get({path : userPath , version : '0.0.1'} , core.findAllUsers);
-server.get({path : userPath +'/:userId' , version : '0.0.1'} , core.findUser);
+server.get({path : userPath , version : '0.0.8'} , core.findAllUsers);
+server.get({path : userPath +'/:userId' , version : '0.0.8'} , core.findUser);
 //sorted by user (given user, to what applied/member)
-server.get({path : userPath +'/:userId'+'/memberships' , version : '0.0.1'} , core.findMemberships);
-server.get({path : userPath +'/:userId'+'/applications' , version : '0.0.1'} , FIXME);
+server.get({path : userPath +'/:userId'+'/memberships' , version : '0.0.8'} , core.findMemberships);
+//server.get({path : userPath +'/:userId'+'/applications' , version : '0.0.1'} , FIXME);
 //end
 server.post({path : userPath +'/create' , version : '0.0.1'} , core.createUser);
 server.post({path : userPath +'/:userId'+'/memberships/create' , version : '0.0.1'} , core.createApplication);
@@ -27,13 +27,13 @@ server.post({path : userPath +'/:userId'+'/memberships/:bodyCode/modify' , versi
 
 var bodiesPath = '/bodies';
 //sorted by antenna (given antenna, who is member/applied)
-server.get({path : bodiesPath +'/:bodyCode'+'/applications' , version : '0.0.1'} , core.findApplications);
-server.get({path : bodiesPath +'/:bodyCode'+'/members' , version : '0.0.1'} , FIXME);
+server.get({path : bodiesPath +'/:bodyCode'+'/applications' , version : '0.0.8'} , core.findApplications);
+server.get({path : bodiesPath +'/:bodyCode'+'/members' , version : '0.0.8'} , core.findMembers);
 //end
 
 var antennaePath = '/antennae';
-server.get({path : antennaePath , version : '0.0.1'} , core.findAllAntennae);
-server.get({path : antennaePath +'/:bodyCode' , version : '0.0.1'} , core.findAntenna);
+server.get({path : antennaePath , version : '0.0.8'} , core.findAllAntennae);
+server.get({path : antennaePath +'/:bodyCode' , version : '0.0.8'} , core.findAntenna);
 server.post({path : antennaePath +'/create' , version : '0.0.1'} , core.createAntenna);
 
 
