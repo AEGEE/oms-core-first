@@ -71,7 +71,7 @@ exports.findMembers = function(req, res , next){ //cannot do "find all applicati
     res.setHeader('Access-Control-Allow-Origin','*');
     if(verbose) console.log("findMembers");
 
-    var searchDN = 'ou=antennae, '+ldap_top_dn;
+    var searchDN = 'ou=bodies, '+ldap_top_dn;
     var filter = '(&(&(objectClass=aegeePersonMembership)(memberType=Member))(bodyCode='+req.params.bodyCode+'))';
 
     searchLDAP(filter, searchDN, res );
@@ -82,8 +82,8 @@ exports.findAllAntennae = function(req, res , next){
     res.setHeader('Access-Control-Allow-Origin','*');
     if(verbose) console.log("findAllAntennae");
 
-    var searchDN = 'ou=antennae, '+ldap_top_dn;
-    var filter = '(objectClass=aegeeBodyFab)';
+    var searchDN = 'ou=bodies, '+ldap_top_dn;
+    var filter = '(&(objectClass=aegeeBodyFab)(bodyCategory=Local))';
 
     searchLDAP(filter, searchDN, res );
 }
@@ -93,7 +93,7 @@ exports.findAntenna = function(req, res , next){
     res.setHeader('Access-Control-Allow-Origin','*');
     if(verbose) console.log("findAntennae");
 
-    var searchDN = 'ou=antennae, '+ldap_top_dn;
+    var searchDN = 'ou=bodies, '+ldap_top_dn;
     var filter = '(&(bodyCode='+req.params.bodyCode+')(objectClass=aegeeBodyFab))';
 
     searchLDAP(filter, searchDN, res );
@@ -135,7 +135,7 @@ exports.createAntenna = function(req, res , next){
     res.setHeader('Access-Control-Allow-Origin','*');
     if(verbose) console.log("createAntenna");
 
-    var baseDN = 'ou=antennae, '+ldap_top_dn;
+    var baseDN = 'ou=bodies, '+ldap_top_dn;
 
     var entry = {
       bodyCategory: req.params.bodyCategory,
