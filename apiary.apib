@@ -1,0 +1,218 @@
+FORMAT: 1A
+HOST: http://oms.apiblueprint.org/
+
+# OMS test
+
+Documentation for the Online Membership System in Apiary
+
+
+## Creates new user [POST /users/create]
+
+Creates new user in LDAP
+
+###Attributes
+
+The object has the following attributes:
+
++ sn
++ givenName
++ cn
++ uid
++ mail
++ userPassword
++ birthDate.
+
+
+
++ Parameters
+    + sn: Johnson (required, number) - Surname
+    + givenName: Cave (required, String) - First Name
+    + cn: Cave Johnson - Full Name
+    + uid: cave.johnson - User ID
+    + mail: cavejohnson@aperturescience.com (required, String) - Email address of the user
+    + userPassword: '16ec1ebb01fe02ded9b7d5447d3dfc65' (required, hash) - Hashed User password
+    + birthDate (required, Date) - User Birthdate
+    
+
++ Request (application/json)
+
+        {
+            "sn": "Johnson"
+            "givenName": "Cave"
+            "cn": "Cave Johnson"
+            "uid": "cave.johnson"
+            "mail": "cavejohnson@aperturescience.com"
+            "userPassword": "16ec1ebb01fe02ded9b7d5447d3dfc65"
+            "birthDate": "01-01-1990"
+        }
+
++ Response 201 (application/json)
+
+        {
+            "status": "User created"
+        }
+
+## Create new membership [POST /users/{userId}/memberships/create]
+
+Creates new membership for an user
+
+###Attributes
+
+The object has the following attributes:
+
++ userId: name.surname - User ID of the user for which the membership will be created
++ bodyCategory: bodyCategory
++ bodyCode: bodyCode
++ bodyNameAscii: bodyNameAscii,
++ mail: mail,
++ memberSinceDate: memberSinceDate,
++ memberUntilDate: memberUntilDate,
++ netcom: netcom,
+
+
++ Parameters
+    + userId: cave.johnson - User ID of the user for which the membership will be created
+    + bodyCategory: Local
+    + bodyCode: NEW
+    + bodyNameAscii: Newcastle-upon-Tyne,
+    + mail: cavejohnson@aperturescience.com,
+    + memberSinceDate: 01/01/2015,
+    + memberUntilDate: 01/12/2016,
+    + netcom: name.surname,
+
++ Request (application/json)
+
+        {
+            "userId": "cave.johnson",
+            "bodyCategory": "Local",
+            "bodyCode": "NEW",
+            "bodyNameAscii": "Newcastle-upon-Tyne",
+            "mail": "cavejohnson@aperturescience.com",
+            "memberSinceDate": "01/01/2015",
+            "memberUntilDate": "01/12/2016",
+            "netcom": "name.surname"
+        }
+
++ Response 201 (application/json)
+
+         {
+            "status": "Membership created"
+        } 
+
+## List All users [GET /users]
+
+List all users
+
+
++ Response 200 (application/json)
+
+        {
+            "gn": "Cave"
+            "cn": "Cave Johnson"
+            "sn": "Johnson"
+            "uid": "cave.johnson"
+            "userpassword": "whowants60$.cash."
+            "mail": "cavejohnson@aperturescience.com"
+            "description: "something"
+        }
+
+
+## List user details [GET /user/{userId}]
+
++ Response 200 (application/json)
+
+        {
+            "gn": "Cave"
+            "cn": "Cave Johnson"
+            "sn": "Johnson"
+            "uid": "cave.johnson"
+            "userpassword": "whowants60$.cash."
+            "mail": "cavejohnson@aperturescience.com"
+            "description: "something"
+        }
+
+## Memberships of selected user [GET /user/{userId}/memberships]
+
+finds specific users' memberships
+
+
++ userId: name.surname - User ID of the user
+
+
+
++ Parameters
+    + userId: cave.johnson - User ID of the user
+    
+
++ Response 200 (application/json)
+
+        {
+            "userId": "cave.johnson",
+            "bodyCategory": "Local",
+            "bodyCode": "NEW",
+            "bodyNameAscii": "Newcastle-upon-Tyne",
+            "mail": "cavejohnson@aperturescience.com",
+            "memberSinceDate": "01/01/2015",
+            "memberUntilDate": "01/12/2016",
+            "netcom": "name.surname"
+        }
+
+## finds users member since at least. [GET /user/{membershipdate}]
+finds users member since at least... (NOT IMPLEMENTED)
+
++ Parameters
+    + membershipdate: 01/01/2015
+
++ Response 200 (application/json)
+
+        {
+            "userId": "cave.johnson",
+            "bodyCategory": "Local",
+            "bodyCode": "NEW",
+            "bodyNameAscii": "Newcastle-upon-Tyne",
+            "mail": "cavejohnson@aperturescience.com",
+            "memberSinceDate": "01/01/2015",
+            "memberUntilDate": "01/12/2016",
+            "netcom": "name.surname"
+        }
+
+## finds users with membership until [GET /user/{membershipuntil}]
+:finds users with membership until... (NOT IMPLEMENTED)
+
++ Response 200 (application/json)
+
+## Group Antennae
+
+## finds all antennae [GET /antennae]
+finds all antennae (that exist and have existed)
+
++ Response 200 (application/json)
+
+## finds antenna [GET /antennae/{bodyCode}]
+finds antenna with specific bodycode
+
+
++ Response 200 (application/json)
+
+        {
+            bodycode: CRN
+            bodynameascii: A Coruna
+            mail: acoruna@aegee.org
+            netcom: name.surname
+            bodyCategory: Local
+            bodystatus: A
+            o: something
+            latitude: 43.37278
+            longitude: 8.39889
+        }
+
+
+## finds antenna with specific body status  [GET /antennae/{bodyStatus}]
+finds antenna with specific body status (NOT IMPLEMENTED)
+
++ Response 200 (application/json)
+
+## Group Bodies
+
+Resources related to bodies in the API.
+
