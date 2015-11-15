@@ -2,7 +2,8 @@
   "dependencies": {
     "config.json": "~0.0.4",
     "ldapjs": "^1.0.0",
-    "restify": "^4.0.3"
+    "restify": "^4.0.3",
+    "bunyan": "~1.5.1"
   },
   "devDependencies": {
     "chai": "~3.4.1",
