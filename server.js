@@ -1,11 +1,13 @@
 
 var restify = require('restify');
 var core = require('./core'); //the real place where the API callbacks are
+var log = require('./logger');
 
 var config = require('config.json')();
 
 var server = restify.createServer({
-    name : "calaf"
+    name : "calaf",
+    log: log
 });
 
 server.use(restify.queryParser());
