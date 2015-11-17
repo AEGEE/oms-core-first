@@ -28,7 +28,7 @@ exports.findAllUsers = function(req, res , next){
     var filter = '(objectClass=aegeePersonFab)';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //v0.0.8 - remember to bump version numbers
 exports.findUser = function(req, res , next){
@@ -39,7 +39,7 @@ exports.findUser = function(req, res , next){
     var filter = '(&(uid='+req.params.userId+')(objectClass=aegeePersonFab))';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //this finds the membership *of a person*
 //v0.0.8 - remember to bump version numbers
@@ -51,7 +51,7 @@ exports.findMemberships = function(req, res , next){
     var filter = '(&(objectClass=aegeePersonMembership)!(memberType=Applicant))';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //this finds the applications *to a body*
 //v0.0.8 - remember to bump version numbers
@@ -63,7 +63,7 @@ exports.findApplications = function(req, res , next){ //cannot do "find all appl
     var filter = '(&(&(objectClass=aegeePersonMembership)(memberType=Applicant))(bodyCode='+req.params.bodyCode+'))';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //this finds the members *of a body*
 //v0.0.8 - remember to bump version numbers
@@ -75,7 +75,7 @@ exports.findMembers = function(req, res , next){ //cannot do "find all applicati
     var filter = '(&(&(objectClass=aegeePersonMembership)(memberType=Member))(bodyCode='+req.params.bodyCode+'))';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //v0.0.8 - remember to bump version numbers
 exports.findAllAntennae = function(req, res , next){
@@ -86,7 +86,7 @@ exports.findAllAntennae = function(req, res , next){
     var filter = '(&(objectClass=aegeeBodyFab)(bodyCategory=Local))';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //v0.0.8 - remember to bump version numbers
 exports.findAntenna = function(req, res , next){
@@ -97,7 +97,7 @@ exports.findAntenna = function(req, res , next){
     var filter = '(&(bodyCode='+req.params.bodyCode+')(objectClass=aegeeBodyFab))';
 
     searchLDAP(filter, searchDN, res );
-}
+};
 
 //v0.0.1 - remember to bump version numbers
 exports.createUser = function(req, res , next){
@@ -128,7 +128,7 @@ exports.createUser = function(req, res , next){
     res.send(200, entry);
 
     //TRIGGER: apply to body registered with
-}
+};
 
 //v0.0.1 - remember to bump version numbers
 exports.createAntenna = function(req, res , next){
@@ -159,7 +159,7 @@ exports.createAntenna = function(req, res , next){
 
     //TRIGGER: create local groups (e.g. board) entries
 
-}
+};
 
 //v0.0.1 - remember to bump version numbers
 exports.createApplication = function(req, res , next){ //TODO: extend to multiple memberships?
@@ -194,7 +194,7 @@ exports.createApplication = function(req, res , next){ //TODO: extend to multipl
 
     //TRIGGER: send email to board of applied body
 
-}
+};
 
 //v0.0.1 - remember to bump version numbers
 exports.modifyMembership = function(req, res , next){ //TODO: extend to multiple memberships?
@@ -253,7 +253,7 @@ exports.modifyMembership = function(req, res , next){ //TODO: extend to multiple
     res.send(200, results);
 
     //TRIGGER: send email to user about application to body confirmed/rejected
-}
+};
 
 
 //HELPER METHODS
@@ -295,4 +295,4 @@ searchLDAP = function(searchFilter, searchDN, res) {
         });
 
     });
-}
+};
