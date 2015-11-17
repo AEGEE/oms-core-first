@@ -1,5 +1,7 @@
 #AEGEE-Europe's Online Membership System
 
+[![Build Status](https://travis-ci.org/AEGEE/oms-core.svg?branch=master)](https://travis-ci.org/AEGEE/oms-core)
+
 ## Introduction
 
 Welcome gentlemen, to Aperture Science. [Now you've met one another on the limo ride over, so let me introduce myself](http://i1.theportalwiki.net/img/4/4d/Cave_Johnson_fifties_intro03.wav): [I'm Cave Johnson. I own the place.](http://i1.theportalwiki.net/img/e/e2/Cave_Johnson_fifties_intro04.wav)
