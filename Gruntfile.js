@@ -7,6 +7,11 @@ module.exports = function(grunt) {
         src: ['*.js']
       }
     },
+    jsonlint: {
+      all: {
+        src: [ '*.json' ]
+      }
+    },
     gjslint: {
       options: {
          flags: [
@@ -35,6 +40,7 @@ module.exports = function(grunt) {
   // Load modules with task definitions
   grunt.loadNpmTasks('grunt-gjslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-jsonlint');
 
   // Default task(s)
   grunt.registerTask('default', ['jshint', 'gjslint']);
