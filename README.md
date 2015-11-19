@@ -1,5 +1,7 @@
 #AEGEE-Europe's Online Membership System
 
+[![Build Status](https://travis-ci.org/AEGEE/oms-core.svg?branch=master)](https://travis-ci.org/AEGEE/oms-core)
+
 ## Introduction
 
 Welcome gentlemen, to Aperture Science. [Now you've met one another on the limo ride over, so let me introduce myself](http://i1.theportalwiki.net/img/4/4d/Cave_Johnson_fifties_intro03.wav): [I'm Cave Johnson. I own the place.](http://i1.theportalwiki.net/img/e/e2/Cave_Johnson_fifties_intro04.wav)
@@ -18,24 +20,21 @@ The language for the Core is Node.js, because there are plenty of REST libraries
 
 ## Architecture
 
-You can read more about the architecture on the [wiki](https://bitbucket.org/aegeeitc/oms-core/wiki/Home)
+You can read more about the architecture on the [wiki](https://github.com/aegee/oms-core/wiki)
 
 ## API
 
+For better visualisation and more detailed API consult [APIary](https://app.apiary.io/omscore/) (not sure how the permissions to edit work, but nothing that can't be solved by asking)
 Assuming the base URL being < host >/api:
 
 ### Create
 
 ```
-#!python
-
 POST /users/create
 ```          
 :creates new user
 
 ```
-#!python
-
 POST /users/:userId/memberships/create
 ```          
 :creates new membership for an user
@@ -43,61 +42,43 @@ POST /users/:userId/memberships/create
 ### Read
 
 ```
-#!python
-
 GET /antennae
 ```          
 :finds all antennae (that exist and have existed)
 
 ```
-#!python
-
 GET /antennae/:bodyCode 
 ```
 :finds antenna with specific bodycode
 
 ```
-#!python
-
 GET /antennae/:bodyStatus
 ```
 :finds antenna with specific body status (NOT IMPLEMENTED)
 
 ```
-#!python
-
 GET /users
 ```
 :finds all users
 
 ```
-#!python
-
 GET /user/:userId
 ```
 :finds specific users
 
 ```
-#!python
-
 GET /user/:userId/memberships
 ```
 :finds specific users' memberships
 
 ```
-#!python
-
 GET /user/:membershipdate    
 ```
 :finds users member since at least... (NOT IMPLEMENTED)
 
 ```
-#!python
-
 GET /user/:membershipuntil
 ```
 :finds users with membership until... (NOT IMPLEMENTED)
 
 ### Update
-
-### Delete

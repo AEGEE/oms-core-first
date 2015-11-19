@@ -4,6 +4,13 @@
     "config.json": "~0.0.4",
     "ldapjs": "~1",
     "bunyan": "~1"
+  },
+  "devDependencies": {
+    "jshint": "~2.9.1-rc1"
+  },
+  "scripts": {
+    "rest": "",
+    "lint": "jshint **.js",
+    "pretest": "npm run lint"
   }
 }
-
