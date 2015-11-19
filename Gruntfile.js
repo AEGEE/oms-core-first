@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     jshint: {
+      options: {
+        eqnull: true,
+        newcap: true,
+        indent: 2,
+        noempty: true,
+        node: true
+      },
       all: {
         src: ['*.js']
       }
