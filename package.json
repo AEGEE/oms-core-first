@@ -5,11 +5,12 @@
     "ldapjs": "~0.7.0"
   },
   "devDependencies": {
-    "jshint": "~2.9.1-rc1"
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-gjslint": "~0.2.0",
+    "grunt-cli": "~0.1.13"
   },
   "scripts": {
-    "rest": "",
-    "lint": "jshint **.js",
-    "pretest": "npm run lint"
+    "test": "grunt"
   }
 }
