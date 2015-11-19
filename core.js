@@ -110,7 +110,7 @@ exports.createUser = function(req, res , next) {
       sn: req.params.sn,
       givenName: req.params.givenName,
       cn: req.params.cn,
-      uid: req.params.givenName + '.'+ req.params.sn, //TODO: check clashes between existing UIDs
+      uid: req.params.givenName + '.' + req.params.sn, //TODO: check clashes between existing UIDs
       mail: req.params.mail,
       userPassword: req.params.userPassword,
       birthDate: req.params.birthDate,
@@ -118,7 +118,7 @@ exports.createUser = function(req, res , next) {
     };
 
 
-    client.add('uid=' + entry.uid + ','+ baseDN, entry, function(err) {
+    client.add('uid=' + entry.uid + ',' + baseDN, entry, function(err) {
       assert.ifError(err);
     });
 
@@ -148,7 +148,7 @@ exports.createAntenna = function(req, res , next) {
     };
 
 
-    client.add('bodyCode=' + entry.bodyCode + ','+ baseDN, entry, function(err) {
+    client.add('bodyCode=' + entry.bodyCode + ',' + baseDN, entry, function(err) {
       assert.ifError(err);
     });
 
@@ -183,11 +183,11 @@ exports.createApplication = function(req, res , next) { //TODO: extend to multip
       objectclass: 'aegeePersonMembership'
     };
 
-    client.add('bodyCode=' + entry.bodyCode + ','+ baseDN, entry, function(err) {
+    client.add('bodyCode=' + entry.bodyCode + ',' + baseDN, entry, function(err) {
       assert.ifError(err);
     });
 
-    console.log('added entry under '+ baseDN + ': ');
+    console.log('added entry under ' + baseDN + ': ');
     console.log(entry);
 
     res.send(200, entry);
@@ -271,7 +271,7 @@ searchLDAP = function(searchFilter, searchDN, res) {
       attributes: ''
     };
 
-    if (verbose) console.log('searchFilter is '+ searchFilter);
+    if (verbose) console.log('searchFilter is ' + searchFilter);
 
     client.search(searchDN, opts, function(err, ldapres) {
         assert.ifError(err);
