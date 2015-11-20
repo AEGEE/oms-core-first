@@ -2,6 +2,16 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    mocha_istanbul: {
+      coverage: {
+        src: 'test'
+      }
+    },
+    coveralls: {
+      default: {
+        src: 'coverage/*.info'
+      }
+    },
     mochaTest: {
       test: {
         options: {
@@ -19,7 +29,7 @@ module.exports = function(grunt) {
         node: true
       },
       all: {
-        src: ['*.js']
+        src: ['*.js', 'test/**/*.js']
       }
     },
     jsonlint: {
@@ -36,7 +46,7 @@ module.exports = function(grunt) {
           name: 'console'
         }
       },
-      all: {  //specify your targets, grunt style.
+      all: {
         src: ['*.js', 'test/**/*.js'],
       }
     },
@@ -57,7 +67,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jsonlint');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-mocha-istanbul');
+  grunt.loadNpmTasks('grunt-coveralls');
 
-  // Default task(s)
-  grunt.registerTask('default', ['jshint', 'gjslint']);
+  // Register custom tasks
+  grunt.registerTask('default', ['jshint', 'gjslint', 'coverage', 'coveralls']);
+  grunt.registerTask('coverage', ['mocha_istanbul:coverage']);
 };

@@ -1,6 +1,9 @@
 #AEGEE-Europe's Online Membership System
 
 [![Build Status](https://travis-ci.org/AEGEE/oms-core.svg?branch=master)](https://travis-ci.org/AEGEE/oms-core)
+[![Coverage Status](https://coveralls.io/repos/AEGEE/oms-core/badge.svg?service=github)](https://coveralls.io/github/AEGEE/oms-core)
+[![Dependency Status](https://david-dm.org/aegee/oms-core.svg)](https://david-dm.org/aegee/oms-core)
+[![devDependency Status](https://david-dm.org/aegee/oms-core/dev-status.svg)](https://david-dm.org/aegee/oms-core#info=devDependencies)
 
 ## Introduction
 
