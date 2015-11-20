@@ -2,6 +2,14 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*.js']
+      }
+    },
     jshint: {
       options: {
         eqnull: true,
@@ -16,7 +24,7 @@ module.exports = function(grunt) {
     },
     jsonlint: {
       all: {
-        src: [ '*.json' ]
+        src: ['*.json']
       }
     },
     gjslint: {
@@ -29,7 +37,7 @@ module.exports = function(grunt) {
         }
       },
       all: {  //specify your targets, grunt style.
-        src: ['*.js'],
+        src: ['*.js', 'test/**/*.js'],
       }
     },
     fixjsstyle: {
@@ -39,7 +47,7 @@ module.exports = function(grunt) {
         }
       },
       all: {
-        src: ['*.js'],
+        src: ['*.js', 'test/**/*.js'],
       }
     }
   });
@@ -48,6 +56,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gjslint');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jsonlint');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   // Default task(s)
   grunt.registerTask('default', ['jshint', 'gjslint']);
