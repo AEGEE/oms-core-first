@@ -14,9 +14,13 @@
     "chai": "~3.4.1",
     "express": "~4.13.3",
     "superagent": "~1.4.0",
-    "grunt-mocha-test": "~0.12.7"
+    "grunt-mocha-test": "~0.12.7",
+    "istanbul": "~0.4.0",
+    "grunt-mocha-istanbul": "~3.0.1",
+    "coveralls": "~2.11.4",
+    "grunt-coveralls": "~1.0.0"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "grunt --force # TODO: remove --force"
   }
 }

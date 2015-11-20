@@ -1,6 +1,7 @@
 #AEGEE-Europe's Online Membership System
 
 [![Build Status](https://travis-ci.org/AEGEE/oms-core.svg?branch=master)](https://travis-ci.org/AEGEE/oms-core)
+[![Coverage Status](https://coveralls.io/repos/ingomueller-net/oms-core/badge.svg?branch=mocha&service=github)](https://coveralls.io/github/ingomueller-net/oms-core?branch=mocha)
 
 ## Introduction
 
