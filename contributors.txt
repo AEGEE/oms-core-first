@@ -1,4 +1,6 @@
-Fabrizio Bellicano, AEGEE-Leuven; (Bitbucket: grasshopper)
+Fabrizio Bellicano, AEGEE-Leuven; (Github: serviceman)
+Ingo Mueller, AEGEE-Heidelberg; (Github: ingomueller-net)
+Stefano Benvenuti; (Github: stebenve86)
 
-your name, antenna; bitbucket/github username
+your name, antenna (if member of AEGEE); github/bitbucket username
 (plz use comma and semicolon as pointed) 

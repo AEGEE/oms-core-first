@@ -72,7 +72,7 @@ exports.findMembers = function(req, res , next) { //cannot do "find all applicat
     req.log.debug({req: req}, 'findMembers request');
     res.setHeader('Access-Control-Allow-Origin', '*');
 
-    var searchDN = 'ou=bodies, ' + ldap_top_dn;
+    var searchDN = 'ou=people, ' + ldap_top_dn;
     var filter = '(&(&(objectClass=aegeePersonMembership)(memberType=Member))(bodyCode=' + req.params.bodyCode + '))';
 
     searchLDAP(filter, searchDN, res);
