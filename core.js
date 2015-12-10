@@ -19,6 +19,7 @@ client.bind('cn=admin,' + ldap_top_dn, config.ldap.rootpw, function(err) { //TOD
 });
 
 
+
 //API DEFINITION
 
 //v0.0.6 middleware
@@ -59,6 +60,7 @@ exports.authenticate = function(req, res, next) {
       client.log.info({err: err}, 'LDAP user binding');
       res.json({ success: false, message: 'Authentication failed. ' });
     }
+    
     return generateToken(res, user);
   });
 
@@ -270,7 +272,7 @@ exports.modifyMembership = function(req, res , next) {
     });
 
     var searchDN = 'ou=people, ' + ldap_top_dn;
-    var filter = '(&(uid=' + req.params.userId + ')(objectClass=aegeeMembershipFab))';
+    var filter = '(&(uid=' + req.params.userId + ')(objectClass=aegeePersonMembership))';
 
     searchLDAP(filter, searchDN, res);
 
@@ -327,11 +329,18 @@ function generateToken(res, user){
     expiresIn: 21600 // (in seconds) - expires in 6 hours
   });
 
-  // return the information including token as JSON
-  res.json({
-    success: true,
-    message: 'Enjoy your token!',
-    token: token
+  //after all is well, before returning the token 
+  // re-bind with privileged user
+  client.bind('cn=admin,' + ldap_top_dn, config.ldap.rootpw, function(err) { //TODO: change to a privileged but non root (#4)
+    client.log.info({err: err}, 'LDAP client binding');
+    assert.ifError(err);
+
+    // return the information including token as JSON
+    res.json({
+      success: true,
+      message: 'Enjoy your token!',
+      token: token    
+    });
   });
 
 };
