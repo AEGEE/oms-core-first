@@ -3,5 +3,6 @@
   "ldap": {
     "url": "ldap://127.0.0.1:389",
     "rootpw": "aegee"
-  }
+  },
+  "secret": "the rise and fall of ziggy stardust and spiders from mars"
 }
