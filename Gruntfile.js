@@ -4,7 +4,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     mocha_istanbul: {
       coverage: {
-        src: 'test'
+        src: 'test',
+        options: {
+                    coverageFolder: 'coverageStuff',
+                }
       }
     },
     coveralls: {
