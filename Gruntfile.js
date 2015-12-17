@@ -4,7 +4,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     mocha_istanbul: {
       coverage: {
-        src: 'test'
+        src: 'test',
+        options: {
+                    coverageFolder: 'coverageStuff',
+                }
       }
     },
     coveralls: {
@@ -22,14 +25,21 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
+        bitwise: true,
+        curly: true,
+        eqeqeq: true,
+        forin: true,
+        latedef: false,
+        nocomma: true,
+        nonew: true,
+        undef: true,
+        unused: true,
         eqnull: true,
-        newcap: true,
-        indent: 2,
-        noempty: true,
+        elision: false,
         node: true
       },
       all: {
-        src: ['*.js', 'test/**/*.js']
+        src: ['*.js']
       }
     },
     jsonlint: {
