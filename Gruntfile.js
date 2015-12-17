@@ -22,10 +22,17 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
+        bitwise: true,
+        curly: true,
+        eqeqeq: true,
+        forin: true,
+        latedef: false,
+        nocomma: true,
+        nonew: true,
+        undef: true,
+        unused: strict,
         eqnull: true,
-        newcap: true,
-        indent: 2,
-        noempty: true,
+        elision: false,
         node: true
       },
       all: {
