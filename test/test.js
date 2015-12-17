@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var request = require('superagent');
 
-var core = require('../core');
+var core = require('../lib/core');
 var restify = require('restify');
 
 var userPath = '/users';
