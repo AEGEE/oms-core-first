@@ -27,4 +27,4 @@ You can read more about the architecture on the [wiki](https://github.com/aegee/
 
 ## API
 
-For better visualisation and more detailed API consult [Apiary](https://app.apiary.io/omscore/) (not sure how the permissions to edit work, but nothing that can't be solved by asking).
+For better visualisation and more detailed API consult [Apiary](http://docs.omscore.apiary.io/) (not sure how the permissions to edit work, but nothing that can't be solved by asking).
