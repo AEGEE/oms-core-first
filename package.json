@@ -3,17 +3,15 @@
   "version": "0.1.0",
   "description": "REST API for AEGEE's infrastructure",
   "license": "Apache-2.0",
-  "repository" : "AEGEE/oms-core",
-  "main": "server.js",
-
   "repository": "AEGEE/oms-core",
-
+  "main": "server.js",
   "dependencies": {
-    "config.json": "^0.0.4",
-    "ldapjs": "^1.0.0",
-    "restify": "^4.0.3",
     "bunyan": "^1.5.1",
-    "jsonwebtoken": "^5.4.1"
+    "config.json": "^0.0.4",
+    "emailjs": "^1.0.1",
+    "jsonwebtoken": "^5.4.1",
+    "ldapjs": "^1.0.0",
+    "restify": "^4.0.3"
   },
   "devDependencies": {
     "chai": "~3.4.1",
