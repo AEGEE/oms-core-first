@@ -6,213 +6,499 @@ HOST: http://oms.apiblueprint.org/
 Documentation for the Online Membership System in Apiary
 
 
-## Creates new user [POST /users/create]
+## Authenticate a user [POST /authenticate]
+Authentication mechanism. Returns a JSON web token to be used 
+for all future authentications to API endpoints.
 
-Creates new user in LDAP
 
-###Attributes
++ Parameters
+    + username: cave.johnson (required, String) - LDAP uid
+    + password: 16ec1ebb01fe02ded9b7d5447d3dfc65 (required, String) - LDAP password
+    + user  (required, JSON) - A JSON representation of the user as taken from the DB
 
+            
++ Response 200 (application/json)
+
+        {
+            "success": "true",
+            "message": "Enjoy your token!",
+            "token": "9b7d5447d3dfc659b7d5447d3dfc652ded96ec1ebbb7d5447d316ec1ebb01fe02ded9b7d5447d3dfc65"
+        }
+        
+# Group Users 
+
+## List all users [GET /users]
+A query on the users. List **all users in the database**.
+
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+            
+            
++ Response 200 (application/json)
+
+        [
+        {
+            "dn": "uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "givenName": "Cave",
+            "cn": "Cave Johnson",
+            "sn": "Johnson",
+            "uid": "cave.johnson",
+            "userpassword": "16ec1ebb01fe02ded9b7d5447d3dfc65",
+            "mail": "cavejohnson@aperturescience.com",
+        },
+        {
+            "dn": "uid=test.subject,ou=people,o=aegee,c=eu",
+            "givenName": "Chell",
+            "cn": "Test Subject",
+            "sn": "Subject",
+            "uid": "test.subject",
+            "userpassword": "fef447d3d1eeebffc66ec1545eee",
+            "mail": "testsubject1@aperturescience.com"
+        }
+        ]
+
+## List specific user [GET /users/{userId}]
+A query on the users. List a specified user.
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+    
++ Response 200 (application/json)
+
+        {
+            "dn": "uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "givenName": "Cave",
+            "cn": "Cave Johnson",
+            "sn": "Johnson",
+            "uid": "cave.johnson",
+            "userpassword": "16ec1ebb01fe02ded9b7d5447d3dfc65",
+            "mail": "cavejohnson@aperturescience.com"
+        }
+
+## List memberships of selected user [GET /users/{userId}/memberships]
+A query on the users. List all the memberships of a specified user.
+A changelog, if applicable, is included in the membership object.
+    
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+    
++ Response 200 (application/json)
+
+        {
+            "dn": "bodyCode=ITC,uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "ITC",
+            "bodyNameAscii": "Information Technology Committee",
+            "changeLog": [
+                "2014-09-19, membertype=ancien",
+                "2014-09-10, membertype=board, title=speaker",
+                "2014-09-11, membertype=member, title=null",
+                "2014-02-24, membertype=member"
+            ],
+            "cn": "Cave Johnson",
+            "uid": "cave.johnson",
+            "mail": "itc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Member",
+            "memberUntilDate": "20/5/2014"
+        }
+
+## List applications of selected user [GET /users/{userId}/applications]
+A query on the applications that a user has pending.
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+    
++ Response 200 (application/json)
+
+        {
+            "dn": "bodyCode=PRC,uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "PRC",
+            "bodyNameAscii": "Public Relations Committee",
+            "cn": "Cave Johnson",
+            "uid": "cave.johnson",
+            "mail": "prc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Applicant",
+            "memberUntilDate": "20/5/2014"
+        }
+        
+## Create new user [POST /users/create]
+Creates a new user and inserts into the LDAP backend.
+
+### Attributes
 The object has the following attributes:
 
 + sn
 + givenName
-+ cn
-+ uid
++ cn (generated from givenName & sn - does not need to be provided)
++ uid (generated from givenName & sn - does not need to be provided)
 + mail
 + userPassword
-+ birthDate.
-
++ birthDate
 
 
 + Parameters
-    + sn: Johnson (required, number) - Surname
-    + givenName: Cave (required, String) - First Name
-    + cn: Cave Johnson - Full Name
-    + uid: cave.johnson - User ID
-    + mail: cavejohnson@aperturescience.com (required, String) - Email address of the user
-    + userPassword: '16ec1ebb01fe02ded9b7d5447d3dfc65' (required, hash) - Hashed User password
-    + birthDate (required, Date) - User Birthdate
+    + sn: Johnson (required, String) - Surname
+    + givenName: Cave (required, String) - First name
+    + cn: Cave Johnson - Full Name (automatically generated from name & surname)
+    + uid: cave.johnson - User ID (automatically generated from name & surname)
+    + mail: cavejohnson@aperturescience.com (required, String)
+    + userPassword: '16ec1ebb01fe02ded9b7d5447d3dfc65' (required) - User password
+    + birthDate: 10/10/1910 (required, Date)
     
 
 + Request (application/json)
 
-        {
-            "sn": "Johnson"
-            "givenName": "Cave"
-            "cn": "Cave Johnson"
-            "uid": "cave.johnson"
-            "mail": "cavejohnson@aperturescience.com"
-            "userPassword": "16ec1ebb01fe02ded9b7d5447d3dfc65"
-            "birthDate": "01-01-1990"
-        }
-
+    + Headers
+    
+             x-access-token: <token>
+    
+    + Body
+    
+            {
+                "sn": "Johnson"
+                "givenName": "Cave"
+                "cn": "Cave Johnson"
+                "uid": "cave.johnson"
+                "mail": "cavejohnson@aperturescience.com"
+                "userPassword": "16ec1ebb01fe02ded9b7d5447d3dfc65"
+                "birthDate": "01-01-1990"
+            }
+        
 + Response 201 (application/json)
 
         {
-            "status": "User created"
+            "dn": "uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "givenName": "Cave",
+            "cn": "Cave Johnson",
+            "sn": "Johnson",
+            "uid": "cave.johnson",
+            "userpassword": "16ec1ebb01fe02ded9b7d5447d3dfc65",
+            "mail": "cavejohnson@aperturescience.com"
         }
 
-## Create new membership [POST /users/{userId}/memberships/create]
+## Create new application to membership [POST /users/{userId}/memberships/create]
+Creates new membership application for a user
 
-Creates new membership for an user
 
 ###Attributes
 
 The object has the following attributes:
 
-+ userId: name.surname - User ID of the user for which the membership will be created
-+ bodyCategory: bodyCategory
-+ bodyCode: bodyCode
-+ bodyNameAscii: bodyNameAscii,
-+ mail: mail,
-+ memberSinceDate: memberSinceDate,
-+ memberUntilDate: memberUntilDate,
-+ netcom: netcom,
++ bodyCategory
++ bodyCode
++ bodyNameAscii
++ cn (of the user)
++ mail (of the user)
++ memberSinceDate (automatically set to be from the application date)
++ memberUntilDate (automatically set to be one year after application date)
++ userId (of the user)
 
 
 + Parameters
-    + userId: cave.johnson - User ID of the user for which the membership will be created
-    + bodyCategory: Local
-    + bodyCode: NEW
-    + bodyNameAscii: Newcastle-upon-Tyne,
-    + mail: cavejohnson@aperturescience.com,
-    + memberSinceDate: 01/01/2015,
-    + memberUntilDate: 01/12/2016,
-    + netcom: name.surname,
+    + bodyCategory: Body  (String) - Category of the body: { Working Group | Local | Project | Committee | Commission | LocalGroup | External }
+    + bodyCode: PRC (String) - Three letter abbreviation ID of the body
+    + bodyNameAscii: Public Relations Committee (String) - Full name of the body
+    + cn: Cave Johnson (String) - Name of the member
+    + mail: cavejohnson@aperturescience.com (String) - Email of the member
+    + memberSinceDate: 20/05/2013 (Date) - Automatically set to be from the application date
+    + memberUntilDate: 20/05/2013 (Date) - Automatically set to be one year after application date
+    + userId: cave.johnson (String) - User ID of the user for which the membership will be created
+    
 
 + Request (application/json)
 
-        {
-            "userId": "cave.johnson",
-            "bodyCategory": "Local",
-            "bodyCode": "NEW",
-            "bodyNameAscii": "Newcastle-upon-Tyne",
-            "mail": "cavejohnson@aperturescience.com",
-            "memberSinceDate": "01/01/2015",
-            "memberUntilDate": "01/12/2016",
-            "netcom": "name.surname"
-        }
-
+    + Headers
+    
+             x-access-token: <token>
+    
+    + Body
+    
+            {
+                "bodyCategory": "Body",
+                "bodyCode": "PRC",
+                "bodyNameAscii": "Public Relations Committee",
+                "cn": "Cave Johnson",
+                "mail": "cavejohnson@aperturescience.com",
+                "memberSinceDate": "20/05/2013",
+                "memberUntilDate": "20/05/2014",
+                "userId": "cave.johnson"
+            }
+        
 + Response 201 (application/json)
 
-         {
-            "status": "Membership created"
-        } 
-
-## List All users [GET /users]
-
-List all users
-
-
-+ Response 200 (application/json)
-
         {
-            "gn": "Cave"
-            "cn": "Cave Johnson"
-            "sn": "Johnson"
-            "uid": "cave.johnson"
-            "userpassword": "whowants60$.cash."
-            "mail": "cavejohnson@aperturescience.com"
-            "description: "something"
+            "dn": "bodyCode=PRC,uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "PRC",
+            "bodyNameAscii": "Public Relations Committee",
+            "cn": "Cave Johnson",
+            "uid": "cave.johnson",
+            "mail": "prc ,at, aegee.org",
+            "memberSinceDate": "20/05/2013",
+            "memberType": "Applicant",
+            "memberUntilDate": "20/05/2014"
         }
+        
+## Modify membership status [POST /users/{userId}/memberships/modify]
 
+This endpoint modifies the membership status of the userId provided. 
+The new status of their membership is passed in as POST parameter.
 
-## List user details [GET /user/{userId}]
+###Attributes
 
-+ Response 200 (application/json)
+The object has the following attributes:
 
-        {
-            "gn": "Cave"
-            "cn": "Cave Johnson"
-            "sn": "Johnson"
-            "uid": "cave.johnson"
-            "userpassword": "whowants60$.cash."
-            "mail": "cavejohnson@aperturescience.com"
-            "description: "something"
-        }
-
-## Memberships of selected user [GET /user/{userId}/memberships]
-
-finds specific users' memberships
-
-
-+ userId: name.surname - User ID of the user
-
++ userId - in the request URL
++ memberType - POST, picked from { Rejected | Applicant | Member | Board | Ancien | Honorary | Suspended | Deleted | Erasmus }
 
 
 + Parameters
-    + userId: cave.johnson - User ID of the user
+    + memberType: Board (String) - The type the member becomes
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
     
 
 + Response 200 (application/json)
 
         {
-            "userId": "cave.johnson",
+            "dn": "bodyCode=PRC,uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "PRC",
+            "bodyNameAscii": "Public Relations Committee",
+            "cn": "Cave Johnson",
+            "uid": "cave.johnson",
+            "mail": "prc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Applicant",
+            "memberUntilDate": "20/5/2014"
+        }
+        
+
+
+# Group Antennae
+
+## Find all antennae [GET /antennae]
+
+Find all the antennae in the network, **that exist and have existed**.
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+    
++ Response 200 (application/json)
+
+        [
+        {
+            "dn": "bodyCode=ADA,ou=bodies,o=aegee,c=eu",
             "bodyCategory": "Local",
-            "bodyCode": "NEW",
-            "bodyNameAscii": "Newcastle-upon-Tyne",
-            "mail": "cavejohnson@aperturescience.com",
-            "memberSinceDate": "01/01/2015",
-            "memberUntilDate": "01/12/2016",
-            "netcom": "name.surname"
+            "bodyCode": "ADA",
+            "bodyNameAscii": "Adana",
+            "bodyStatus": "A",
+            "latitude": "36.99139",
+            "longitude": "35.32583",
+            "mail": "adana@aegee.org"
+        },
+        {
+            "dn": "bodyCode=LOU,ou=bodies,o=aegee,c=eu",
+            "bodyCategory": "Local",
+            "bodyCode": "LOU",
+            "bodyNameAscii": "Louvain-la-Neuve",
+            "bodyStatus": "CA",
+            "latitude": "50.66080",
+            "longitude": "4.61183",
+            "mail": "louvain-la-neuve@aegee.org"
+        },
+        {
+            "dn": "bodyCode=LUG,ou=bodies,o=aegee,c=eu",
+            "bodyCategory": "Local",
+            "bodyCode": "LUG",
+            "bodyNameAscii": "Lugano",
+            "bodyStatus": "C",
+            "latitude": "46.02942",
+            "longitude": "8.99480",
+            "mail": "lugano@aegee.org"
+        }
+        ]
+
+## Find antenna [GET /antennae/{bodyCode}]
+Find a specific antennae, identified by the bodyCode.
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+    
++ Response 200 (application/json)
+
+        {
+            "dn": "bodyCode=ADA,ou=bodies,o=aegee,c=eu",
+            "bodyCategory": "Local",
+            "bodyCode": "ADA",
+            "bodyNameAscii": "Adana",
+            "bodyStatus": "A",
+            "latitude": "36.99139",
+            "longitude": "35.32583",
+            "mail": "adana@aegee.org"
         }
 
-## finds users member since at least. [GET /user/{membershipdate}]
-finds users member since at least... (NOT IMPLEMENTED)
+## Create an antenna [POST /antennae/create]
+Adds an entry to the database.
+As per AEGEE rules, of course the new entry will be a "Contact".
+
+###Attributes
+
+The object has the following attributes:
+
++ bodyCategory
++ bodyCode
++ bodyNameAscii
++ mail
++ netcom
+
 
 + Parameters
-    + membershipdate: 01/01/2015
-
-+ Response 200 (application/json)
+    + bodyCategory (String) - Category of the new body created, picked from { Working Group | Local | Project | Committee | Commission | LocalGroup | External }
+    + bodyCode (String, 3 letters) - Unique code to identify the body
+    + bodyNameAscii (String) - Full name of the body
+    + mail
+    + netcom - Person responsible for the body
+    
+    
++ Request (application/json)
 
         {
-            "userId": "cave.johnson",
             "bodyCategory": "Local",
-            "bodyCode": "NEW",
-            "bodyNameAscii": "Newcastle-upon-Tyne",
-            "mail": "cavejohnson@aperturescience.com",
-            "memberSinceDate": "01/01/2015",
-            "memberUntilDate": "01/12/2016",
+            "bodyCode": "LUG",
+            "bodyNameAscii": "Lugano",
+            "mail": "lugano@aegee.org",
+            "netcom": "name.surname"
+        }   
+    
+
++ Response 201 (application/json)
+
+        {
+            "dn": "bodyCode=LUG,ou=bodies,o=aegee,c=eu",
+            "bodyCategory": "Local",
+            "bodyCode": "LUG",
+            "bodyNameAscii": "Lugano",
+            "bodyStatus": "C",
+            "mail": "lugano@aegee.org",
             "netcom": "name.surname"
         }
 
-## finds users with membership until [GET /user/{membershipuntil}]
-:finds users with membership until... (NOT IMPLEMENTED)
+# Group Bodies
 
+## Find all members of a body [GET /bodies/{bodyCode}/members]
+Find the members that belong to a body.
+
+
++ Request (application/json)
+
+    + Headers
+    
+             x-access-token: <token>
+    
+    
 + Response 200 (application/json)
 
-## Group Antennae
-
-## finds all antennae [GET /antennae]
-finds all antennae (that exist and have existed)
-
-+ Response 200 (application/json)
-
-## finds antenna [GET /antennae/{bodyCode}]
-finds antenna with specific bodycode
-
-
-+ Response 200 (application/json)
-
+        [
         {
-            bodycode: CRN
-            bodynameascii: A Coruna
-            mail: acoruna@aegee.org
-            netcom: name.surname
-            bodyCategory: Local
-            bodystatus: A
-            o: something
-            latitude: 43.37278
-            longitude: 8.39889
+            "dn": "bodyCode=ITC,uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "ITC",
+            "bodyNameAscii": "Information Technology Committee",
+            "changeLog": [
+                "2014-09-19, membertype=ancien",
+                "2014-09-10, membertype=board, title=speaker",
+                "2014-09-11, membertype=member, title=null",
+                "2014-02-24, membertype=member"
+            ],
+            "cn": "Cave Johnson",
+            "uid": "cave.johnson",
+            "mail": "itc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Member",
+            "memberUntilDate": "20/5/2014"
+        },
+        {
+            "dn": "bodyCode=ITC,uid=test.subject,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "ITC",
+            "bodyNameAscii": "Information Technology Committee",
+            "cn": "Test Subject",
+            "uid": "test.subject",
+            "mail": "itc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Member",
+            "memberUntilDate": "20/5/2014"
         }
+        ]
 
+## Find all applications to a body [GET /bodies/{bodyCode}/applications]
+Find the applicants that request membership to a body.
 
-## finds antenna with specific body status  [GET /antennae/{bodyStatus}]
-finds antenna with specific body status (NOT IMPLEMENTED)
++ Request (application/json)
 
+    + Headers
+    
+             x-access-token: <token>
+    
 + Response 200 (application/json)
 
-## Group Bodies
-
-Resources related to bodies in the API.
+        [
+        {
+            "dn": "bodyCode=PRC,uid=cave.johnson,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "PRC",
+            "bodyNameAscii": "Public Relations Committee",
+            "cn": "Cave Johnson",
+            "uid": "cave.johnson",
+            "mail": "prc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Applicant",
+            "memberUntilDate": "20/5/2014"
+        },
+        {
+            "dn": "bodyCode=PRC,uid=test.subject,ou=people,o=aegee,c=eu",
+            "bodyCategory": "Body",
+            "bodyCode": "PRC",
+            "bodyNameAscii": "Public Relations Committee",
+            "cn": "Test Subject",
+            "uid": "test.subject",
+            "mail": "prc ,at, aegee.org",
+            "memberSinceDate": "20/5/2013",
+            "memberType": "Applicant",
+            "memberUntilDate": "20/5/2014"
+        }
+        ]
 

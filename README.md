@@ -1,6 +1,9 @@
 #AEGEE-Europe's Online Membership System
 
 [![Build Status](https://travis-ci.org/AEGEE/oms-core.svg?branch=master)](https://travis-ci.org/AEGEE/oms-core)
+[![Coverage Status](https://coveralls.io/repos/AEGEE/oms-core/badge.svg?service=github)](https://coveralls.io/github/AEGEE/oms-core)
+[![Dependency Status](https://david-dm.org/aegee/oms-core.svg)](https://david-dm.org/aegee/oms-core)
+[![devDependency Status](https://david-dm.org/aegee/oms-core/dev-status.svg)](https://david-dm.org/aegee/oms-core#info=devDependencies)
 
 ## Introduction
 
@@ -24,61 +27,4 @@ You can read more about the architecture on the [wiki](https://github.com/aegee/
 
 ## API
 
-For better visualisation and more detailed API consult [APIary](https://app.apiary.io/omscore/) (not sure how the permissions to edit work, but nothing that can't be solved by asking)
-Assuming the base URL being < host >/api:
-
-### Create
-
-```
-POST /users/create
-```          
-:creates new user
-
-```
-POST /users/:userId/memberships/create
-```          
-:creates new membership for an user
-
-### Read
-
-```
-GET /antennae
-```          
-:finds all antennae (that exist and have existed)
-
-```
-GET /antennae/:bodyCode 
-```
-:finds antenna with specific bodycode
-
-```
-GET /antennae/:bodyStatus
-```
-:finds antenna with specific body status (NOT IMPLEMENTED)
-
-```
-GET /users
-```
-:finds all users
-
-```
-GET /user/:userId
-```
-:finds specific users
-
-```
-GET /user/:userId/memberships
-```
-:finds specific users' memberships
-
-```
-GET /user/:membershipdate    
-```
-:finds users member since at least... (NOT IMPLEMENTED)
-
-```
-GET /user/:membershipuntil
-```
-:finds users with membership until... (NOT IMPLEMENTED)
-
-### Update
+For better visualisation and more detailed API consult [Apiary](http://docs.omscore.apiary.io/) (not sure how the permissions to edit work, but nothing that can't be solved by asking).

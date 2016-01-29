@@ -1,2 +1,3 @@
-docs/latex*
 /node_modules/
+/coverage/
+commitmsg
