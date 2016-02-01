@@ -5,7 +5,7 @@ objectClass: aegeeBodyFab
 bodyCode: ITC
 bodyNameAscii: IT Committee
 mail: itc@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Committee
 
@@ -14,7 +14,7 @@ objectClass: aegeeBodyFab
 bodyCode: PRC
 bodyNameAscii: Public Relations Committee
 mail: prc@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Committee
 
@@ -23,7 +23,7 @@ objectClass: aegeeBodyFab
 bodyCode: CHA
 bodyNameAscii: Chair team
 mail: chair@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Committee
 
@@ -32,7 +32,7 @@ objectClass: aegeeBodyFab
 bodyCode: SUC
 bodyNameAscii: Summer University Coordination Team
 mail: suct@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Committee
 

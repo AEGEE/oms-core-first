@@ -1,0 +1,18 @@
+#This contains the services that will ask for a token
+#and constitute the federated system
+
+
+##STRUCTURE
+dn: ou=services, o=aegee,c=eu
+objectclass: organizationalunit
+ou: services
+description: Services that constitute the whole membership system
+
+
+##SERVICES
+dn: uid=profilesModule,ou=services,o=aegee,c=eu
+objectclass: aegeeService
+uid: profilesModule
+userPassword: PrOfIlEmOdUlE
+info: Provider of profiles for users and antennae
+
