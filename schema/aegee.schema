@@ -379,6 +379,14 @@ attributetype ( 1.3.6.1.4.1.19881.1.4.11
 	SINGLE-VALUE 
  )
 
+attributetype ( 1.3.6.1.4.1.19881.1.4.11 
+	NAME 'pictureURL' 
+	DESC 'A link to the user picture' 
+	EQUALITY caseExactMatch 
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+	SINGLE-VALUE 
+ )
+
 objectclass ( 1.3.6.1.4.1.19881.1.3.1 
 	NAME 'aegeePersonFab' 
 	DESC 'AEGEE person (uid=name,cn=people)' 

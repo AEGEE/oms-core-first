@@ -10,9 +10,9 @@ description: Services that constitute the whole membership system
 
 
 ##SERVICES
-dn: uid=profiles-module,ou=services,o=aegee,c=eu
+dn: uid=profilesModule,ou=services,o=aegee,c=eu
 objectclass: aegeeService
-uid: profiles-module
+uid: profilesModule
 userPassword: PrOfIlEmOdUlE
 info: Provider of profiles for users and antennae
 
