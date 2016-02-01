@@ -161,7 +161,7 @@ attributetype ( 1.3.6.1.4.1.19881.1.1.20
 
 attributetype ( 1.3.6.1.4.1.19881.1.1.21 
 	NAME 'memberType' 
-	DESC 'Type of member (applicant, member, board, ancien, deleted, erasmus)' 
+	DESC 'Type of member (applicant, member, board, suspended, ancien, deleted, erasmus)' 
 	EQUALITY caseIgnoreMatch 
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
 	SINGLE-VALUE 
@@ -290,8 +290,8 @@ attributetype ( 1.3.6.1.4.1.19881.1.2.14
  )
 
 attributetype ( 1.3.6.1.4.1.19881.1.2.15 
-	NAME 'netcom' 
-	DESC 'Netcom person reference' 
+	NAME 'supervisor' 
+	DESC 'Person of reference (locals: Netcom; bodies: Speaker)' 
 	EQUALITY caseExactIA5Match 
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 
 	SINGLE-VALUE 
@@ -369,6 +369,13 @@ attributetype ( 1.3.6.1.4.1.19881.1.4.6
 	DESC 'The size of the T-Shirt' 
 	EQUALITY caseIgnoreMatch 
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+	
+
+attributetype ( 1.3.6.1.4.1.19881.1.4.11 
+	NAME 'pictureURL' 
+	DESC 'A link to the user picture' 
+	EQUALITY caseExactMatch 
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
 	SINGLE-VALUE 
  )
 
@@ -378,7 +385,7 @@ objectclass ( 1.3.6.1.4.1.19881.1.3.1
 	SUP person 
 	STRUCTURAL 
 	MUST ( givenName $ mail $ userPassword $ uid ) 
-	MAY ( csn $ gender $ jpegPhoto $ birthDate $ preferredLanguage $ fieldOfStudies $ changeLog $ tShirtSize $ drink ) 
+	MAY ( csn $ gender $ pictureURL $ birthDate $ preferredLanguage $ fieldOfStudies $ changeLog $ tShirtSize $ drink ) 
  )
 
 objectclass ( 1.3.6.1.4.1.19881.1.3.2 
@@ -386,7 +393,7 @@ objectclass ( 1.3.6.1.4.1.19881.1.3.2
 	DESC 'AEGEE body (bodycode=X,cn=antennae/groups/commitees/commissions)' 
 	SUP top 
 	STRUCTURAL 
-	MUST ( bodyCode $ netcom $ bodyNameAscii $ mail $ bodyCategory ) 
+	MUST ( bodyCode $ supervisor $ bodyNameAscii $ mail $ bodyCategory ) 
 	MAY ( netcomCode $ bodyName $ labeledURI $ bodyStatus $ latitude $ longitude $ careOf $ postalCode $ l $ c $ telephoneNumber $ foundedDate $ info $ changeLog $ lastBoardElectionDate $ bankAccount $ description $ registeredAddress $ postalAddress $ o ) 
  )
 
@@ -400,6 +407,15 @@ objectclass ( 1.3.6.1.4.1.19881.1.3.3
  )
 
 objectclass ( 1.3.6.1.4.1.19881.1.3.4 
+	NAME 'aegeeService' 
+	DESC 'AEGEE service that constitute the whole system (uid=name,cn=service)' 
+	SUP top 
+	STRUCTURAL 
+	MUST ( userPassword $ uid ) 
+	MAY ( info $ changeLog ) 
+ )
+
+objectclass ( 1.3.6.1.4.1.19881.1.3.5 
 	NAME 'omsAccount' 
 	DESC 'AEGEE OMS account' 
 	SUP account 
@@ -408,7 +424,7 @@ objectclass ( 1.3.6.1.4.1.19881.1.3.4
 	MAY ( userPassword $ csn $ preferredLanguage $ fieldOfStudies $ loginCount $ lastLoginDate $ lastLoginIP $ changeLog ) 
  )
 
-objectclass ( 1.3.6.1.4.1.19881.1.3.5 
+objectclass ( 1.3.6.1.4.1.19881.1.3.6 
 	NAME 'omsGroup' 
 	DESC 'AEGEE OMS group' 
 	SUP top 
@@ -417,7 +433,7 @@ objectclass ( 1.3.6.1.4.1.19881.1.3.5
 	MAY ( memberUid $ changeLog ) 
  )
 
-objectclass ( 1.3.6.1.4.1.19881.1.3.6 
+objectclass ( 1.3.6.1.4.1.19881.1.3.7 
 	NAME 'omsMember' 
 	DESC 'AEGEE OMS member' 
 	SUP person 
