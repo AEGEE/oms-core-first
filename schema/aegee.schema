@@ -369,7 +369,8 @@ attributetype ( 1.3.6.1.4.1.19881.1.4.6
 	DESC 'The size of the T-Shirt' 
 	EQUALITY caseIgnoreMatch 
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
-	
+	SINGLE-VALUE 
+ )
 
 attributetype ( 1.3.6.1.4.1.19881.1.4.11 
 	NAME 'pictureURL' 
