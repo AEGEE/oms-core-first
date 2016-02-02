@@ -4,7 +4,7 @@ objectClass: aegeeBodyFab
 bodyCode: ACA
 bodyNameAscii: AEGEE-Academy
 mail: aegee-academy@aegee.org
-netcom: person.responsible
+supervisor: person.responsible
 o: something
 bodyCategory: External
 
@@ -14,7 +14,7 @@ objectClass: aegeeBodyFab
 bodyCode: GOL
 bodyNameAscii: AEGEE-Gold
 mail: gold@aegee.org
-netcom: person.responsible
+supervisor: person.responsible
 o: something
 bodyCategory: External
 
@@ -24,7 +24,7 @@ objectClass: aegeeBodyFab
 bodyCode: ANC
 bodyNameAscii: Les Anciens
 mail: anciens@aegee.org
-netcom: person.responsible
+supervisor: person.responsible
 o: something
 o: something else
 bodyCategory: External
@@ -35,7 +35,7 @@ objectClass: aegeeBodyFab
 bodyCode: EMP
 bodyNameAscii: Employees
 mail: headoffice@aegee.org
-netcom: person.responsible
+supervisor: person.responsible
 o: something
 o: something else
 bodyCategory: External

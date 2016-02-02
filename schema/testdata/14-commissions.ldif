@@ -4,7 +4,7 @@ objectClass: aegeeBodyFab
 bodyCode: AUD
 bodyNameAscii: Audit commission
 mail: audit@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Commission
 
@@ -14,7 +14,7 @@ objectClass: aegeeBodyFab
 bodyCode: NET
 bodyNameAscii: Network commission
 mail: netcom@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: net
 o: something
 bodyCategory: Commission
@@ -24,7 +24,7 @@ objectClass: aegeeBodyFab
 bodyCode: MED
 bodyNameAscii: Mediation commission
 mail: medcom@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 o: medcom
 bodyCategory: Commission
@@ -34,7 +34,7 @@ objectClass: aegeeBodyFab
 bodyCode: JUR
 bodyNameAscii: Juridical commission
 mail: jc@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Commission
 
@@ -43,7 +43,7 @@ objectClass: aegeeBodyFab
 bodyCode: CDX
 bodyNameAscii: Comité Directeur
 mail: headoffice@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Commission
 
@@ -52,7 +52,7 @@ objectClass: aegeeBodyFab
 bodyCode: POR
 bodyNameAscii: Pool of Representative
 mail: pool@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Commission
 
@@ -61,6 +61,6 @@ objectClass: aegeeBodyFab
 bodyCode: LOX
 bodyNameAscii: Liaison Officers
 mail: liaisons@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Commission

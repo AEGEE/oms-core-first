@@ -102,7 +102,7 @@ objectClass: aegeeBodyFab
 bodyCode: H4Y
 bodyNameAscii: Health 4 youth
 mail: health@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: something
 bodyCategory: Group
 
@@ -112,7 +112,7 @@ objectClass: aegeeBodyFab
 bodyCode: BOARD
 bodyNameAscii: Board Louvain-La-Neuve
 mail: louvain+board@aegee.org
-netcom: somebody.responsible
+supervisor: somebody.responsible
 o: board
 bodyCategory: LocalGroup
 

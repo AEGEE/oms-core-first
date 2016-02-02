@@ -5,7 +5,7 @@ objectclass: aegeeBodyFab
 bodycode: CRN
 bodynameascii: A Coruna
 mail: acoruna@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: A
 o: something
@@ -17,7 +17,7 @@ objectclass: aegeeBodyFab
 bodycode: AAC
 bodynameascii: Aachen
 mail: aachen@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: A
 o: something
@@ -29,7 +29,7 @@ objectclass: aegeeBodyFab
 bodycode: ADA
 bodynameascii: Adana
 mail: adana@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: A
 o: something
@@ -41,7 +41,7 @@ objectclass: aegeeBodyFab
 bodycode: LOU
 bodynameascii: Louvain-la-Neuve
 mail: louvain-la-neuve@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: CA
 o: something
@@ -53,7 +53,7 @@ objectclass: aegeeBodyFab
 bodycode: LUG
 bodynameascii: Lugano
 mail: lugano@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: C
 o: something
@@ -65,7 +65,7 @@ objectclass: aegeeBodyFab
 bodycode: LUX
 bodynameascii: Luxembourg
 mail: luxembourg@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: C
 o: something
@@ -77,7 +77,7 @@ objectclass: aegeeBodyFab
 bodycode: MNC
 bodynameascii: Manchester
 mail: manchester@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: C
 o: something
@@ -89,7 +89,7 @@ objectclass: aegeeBodyFab
 bodycode: NEW
 bodynameascii: Newcastle-upon-Tyne
 mail: newcastle-upon-tyne@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: C
 o: something

@@ -29,7 +29,7 @@ objectclass: aegeeBodyFab
 bodycode: ADA
 bodynameascii: Adana
 mail: adana@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: A
 o: something
@@ -41,7 +41,7 @@ objectclass: aegeeBodyFab
 bodycode: LOU
 bodynameascii: Louvain-la-Neuve
 mail: louvain-la-neuve@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: CA
 o: something
@@ -53,7 +53,7 @@ objectclass: aegeeBodyFab
 bodycode: LUG
 bodynameascii: Lugano
 mail: lugano@aegee.org
-netcom: ana.potocnik
+supervisor: ana.potocnik
 bodyCategory: Local
 bodystatus: C
 o: something
@@ -101,7 +101,7 @@ objectClass: aegeeBodyFab
 bodyCode: ITC
 bodyNameAscii: IT Committee
 mail: itc@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 bodyCategory: Committee
 
@@ -110,7 +110,7 @@ objectClass: aegeeBodyFab
 bodyCode: PRC
 bodyNameAscii: Public Relations Committee
 mail: prc@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 bodyCategory: Committee
 
@@ -122,7 +122,7 @@ objectClass: aegeeBodyFab
 bodyCode: AUD
 bodyNameAscii: Audit commission
 mail: audit@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 bodyCategory: Commission
 
@@ -131,7 +131,7 @@ objectClass: aegeeBodyFab
 bodyCode: NET
 bodyNameAscii: Network commission
 mail: netcom@aegee.org
-netcom: active.member
+supervisor: active.member
 o: net
 o: something
 bodyCategory: Commission
@@ -144,7 +144,7 @@ objectClass: aegeeBodyFab
 bodyCode: ACA
 bodyNameAscii: AEGEE-Academy
 mail: aegee-academy@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 bodyCategory: External
 
@@ -153,7 +153,7 @@ objectClass: aegeeBodyFab
 bodyCode: GOL
 bodyNameAscii: AEGEE-Gold
 mail: gold@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 bodyCategory: External
 
@@ -162,7 +162,7 @@ objectClass: aegeeBodyFab
 bodyCode: ANC
 bodyNameAscii: Les Anciens
 mail: anciens@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 o: something else
 bodyCategory: External
@@ -172,7 +172,7 @@ objectClass: aegeeBodyFab
 bodyCode: EMP
 bodyNameAscii: Employees
 mail: headoffice@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 o: something else
 bodyCategory: External
@@ -257,7 +257,7 @@ objectClass: aegeeBodyFab
 bodyCode: H4Y
 bodyNameAscii: Health 4 youth
 mail: health@aegee.org
-netcom: active.member
+supervisor: active.member
 o: something
 bodyCategory: Group
 
@@ -269,7 +269,7 @@ objectClass: aegeeBodyFab
 bodyCode: BOARD
 bodyNameAscii: Board Louvain-La-Neuve
 mail: louvain+board@aegee.org
-netcom: active.member
+supervisor: active.member
 o: board
 bodyCategory: LocalGroup
 
