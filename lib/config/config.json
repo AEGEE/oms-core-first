@@ -5,12 +5,16 @@
     "rootpw": "aegee"
   },
   "mongo": {
-    "url": "mongodb://localhost:27018"
+    "url": "mongodb://localhost:27017"
   },
   "secret": "the rise and fall of ziggy stardust and spiders from mars",
-  "email": {
-    "address": "itc.test@aegee.eu",
-    "user": "itc.test",
-    "password": "suchsecretverypassword"
+  
+  "grant_flow": {
+    "authorityHostUrl": "https://login.microsoftonline.com",
+    "application_id": "best of the beast",
+    "grant_type": "client_credentials",
+    "client_id": "its a me mario wohoo",
+    "client_secret": "much wow",
+    "resource": "https://graph.microsoft.com"
   }
 }
