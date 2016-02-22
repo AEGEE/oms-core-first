@@ -71,7 +71,7 @@ mail: active.member@aegee.org
 sn: member
 uid: active.member
 userPassword:: amhn
-birthDate: 2015-04-14
+birthDate: 20150414
 
 dn: uid=board.member,ou=people,ou=regression,o=aegee,c=eu
 objectClass: aegeePersonFab
@@ -81,7 +81,7 @@ mail: board.member@aegee.org
 sn: member
 uid: board.member
 userPassword:: cGlubw==
-birthDate: 2015-04-14
+birthDate: 20150414
 
 dn: uid=other.member,ou=people,ou=regression,o=aegee,c=eu
 objectClass: aegeePersonFab
@@ -91,7 +91,7 @@ mail: other.member@aegee.org
 sn: member
 uid: other.member
 userPassword:: amhn
-birthDate: 2015-04-14
+birthDate: 20150414
 
 
 
@@ -189,8 +189,8 @@ bodyNameAscii: Louvain-la-neuve
 bodyCategory: Local
 mail: louvain@aegee.org
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2014
+memberSinceDate: 20130520
+memberUntilDate: 20140520
 
 
 dn: bodyCode=LOU,uid=active.member,ou=people,ou=regression,o=aegee,c=eu
@@ -202,8 +202,8 @@ bodyNameAscii: Louvain-la-neuve
 bodyCategory: Local
 mail: louvain@aegee.org
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2014
+memberSinceDate: 20140520
+memberUntilDate: 20150520
 changeLog: 2014-09-19, membertype=ancien
 changeLog: 2014-09-10, membertype=board, title=president
 changeLog: 2014-09-11, membertype=member, title=null
@@ -218,8 +218,8 @@ bodyNameAscii: Louvain-la-neuve
 bodyCategory: Local
 mail: louvain@aegee.org
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2013
+memberSinceDate: 20130520
+memberUntilDate: 20140520
 changeLog: 2014-09-19, membertype=ancien
 changeLog: 2014-09-10, membertype=board, title=president
 changeLog: 2014-09-11, membertype=member, title=null
@@ -234,8 +234,8 @@ bodyNameAscii: it commi
 bodyCategory: Committee
 mail: itc@aegee.org
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2013
+memberSinceDate: 20130520
+memberUntilDate: 20140520
 
 dn: bodyCode=PRC,uid=active.member,ou=people,ou=regression,o=aegee,c=eu
 objectClass: aegeePersonMembership
@@ -246,8 +246,8 @@ bodyNameAscii: Public Relations Committee
 bodyCategory: Committee
 mail: prc@aegee
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2013
+memberSinceDate: 20130520
+memberUntilDate: 20140520
 
 
 
@@ -294,5 +294,5 @@ mail: other.member@aegee.org
 sn: member
 uid: other.member
 userPassword:: amhn
-birthDate: 2015-04-14
+birthDate: 20150414
 
