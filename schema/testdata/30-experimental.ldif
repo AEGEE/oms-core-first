@@ -9,7 +9,7 @@ mail: somebody@aegee.org
 sn: responsible
 uid: somebody.responsible
 userPassword:: amhn
-birthDate: 2015-04-14
+birthDate: 20150414
 
 dn: uid=aegee.dude,ou=people,o=aegee,c=eu
 objectClass: aegeePersonFab
@@ -19,7 +19,7 @@ mail: dude@aegee.org
 sn: dude
 uid: aegee.dude
 userPassword:: cGlubw==
-birthDate: 2015-04-14
+birthDate: 20150414
 
 #MEMBERSHIPS
 dn: bodyCode=LOU,uid=somebody.responsible,ou=people,o=aegee,c=eu
@@ -31,8 +31,8 @@ bodyNameAscii: Louvain-la-neuve
 bodyCategory: Local
 mail: louvain@louvain
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2014
+memberSinceDate: 20130520
+memberUntilDate: 20140520
 memberType: Member
 
 
@@ -45,8 +45,8 @@ bodyNameAscii: Louvain-la-neuve
 bodyCategory: Local
 mail: louvain@louvain
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2014
+memberSinceDate: 20130520
+memberUntilDate: 20140520
 changeLog: 2014-09-19, membertype=ancien
 changeLog: 2014-09-10, membertype=board, title=president
 changeLog: 2014-09-11, membertype=member, title=null
@@ -62,8 +62,8 @@ bodyNameAscii: Louvain-la-neuve
 bodyCategory: Local
 mail: louvain@louvain
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2013
+memberSinceDate: 20130520
+memberUntilDate: 20130520
 changeLog: 2014-09-19, membertype=ancien
 changeLog: 2014-09-10, membertype=board, title=president
 changeLog: 2014-09-11, membertype=member, title=null
@@ -79,8 +79,8 @@ bodyNameAscii: it commi
 bodyCategory: Committee
 mail: itc@aegee.org
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2013
+memberSinceDate: 20130520
+memberUntilDate: 20130520
 memberType: Member
 
 dn: bodyCode=PRC,uid=somebody.responsible,ou=people,o=aegee,c=eu
@@ -92,8 +92,8 @@ bodyNameAscii: Public Relations Committee
 bodyCategory: Committee
 mail: prc@aegee
 o: something
-memberSinceDate: 20/5/2013
-memberUntilDate: 20/5/2013
+memberSinceDate: 20130520
+memberUntilDate: 20130520
 memberType: Member
 
 #GROUPS
@@ -135,7 +135,7 @@ mail: somebody@aegee.org
 sn: responsible
 uid: somebody.responsible
 userPassword:: amhn
-birthDate: 2015-04-14
+birthDate: 20150414
 
 
 #TEST FOR GROUPOFURLS OBJECTCLASS
