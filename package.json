@@ -6,6 +6,7 @@
   "repository": "AEGEE/oms-core",
   "main": "server.js",
   "dependencies": {
+    "adal-node": "^0.1.18",
     "agenda": "^0.7.6",
     "bunyan": "^1.5.1",
     "config.json": "^0.0.4",
